@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marawan Younis — Industrial AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f19;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: #1e2d45;
+    --accent: #00c2a8;
+    --accent-dim: rgba(0,194,168,0.12);
+    --accent2: #3b82f6;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --muted2: #94a3b8;
+    --white: #f8fafc;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,15,25,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1.5rem,5vw,4rem);
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted2);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+  }
+
+  /* ─── LAYOUT ─── */
+  .section {
+    padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  h2.section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-sub {
+    color: var(--muted2);
+    max-width: 520px;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem,5vw,4rem);
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 .accent { color: var(--accent); }
+
+  .hero-value {
+    font-size: 1.1rem;
+    color: var(--muted2);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-value strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    padding: 0.75rem 1.75rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.75rem 1.75rem;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero right — metrics panel */
+  .hero-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-panel::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  .panel-header {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .metric-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+
+  .metric-tile {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1rem;
+  }
+
+  .metric-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .metric-label {
+    font-size: 0.8rem;
+    color: var(--muted2);
+    line-height: 1.4;
+  }
+
+  .metric-tile.full { grid-column: 1 / -1; }
+
+  /* ─── BG DECORATION ─── */
+  .bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-glow-1 {
+    width: 600px; height: 600px;
+    background: rgba(0,194,168,0.06);
+    top: -100px; right: -100px;
+  }
+
+  .bg-glow-2 {
+    width: 400px; height: 400px;
+    background: rgba(59,130,246,0.05);
+    bottom: 0; left: -100px;
+  }
+
+  .hero-content-wrap { position: relative; z-index: 1; }
+
+  /* ─── IMPACT STRIP ─── */
+  #impact {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem clamp(1.5rem,5vw,4rem);
+  }
+
+  .impact-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+  }
+
+  .impact-tile {
+    background: var(--surface);
+    padding: 2rem 1.75rem;
+    position: relative;
+  }
+
+  .impact-tile::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .impact-tile:hover::before { opacity: 1; }
+
+  .impact-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .impact-desc {
+    font-size: 0.875rem;
+    color: var(--muted2);
+    line-height: 1.5;
+  }
+
+  /* ─── CASE STUDIES ─── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: border-color 0.25s, transform 0.25s;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+
+  .project-card:hover {
+    border-color: rgba(0,194,168,0.4);
+    transform: translateY(-3px);
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover::after { transform: scaleX(1); }
+
+  .card-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .card-section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-section-text {
+    font-size: 0.875rem;
+    color: var(--muted2);
+    margin-bottom: 1rem;
+    line-height: 1.55;
+  }
+
+  .tech-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tech-tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted2);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+  }
+
+  .result-chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(0,194,168,0.08);
+    border: 1px solid rgba(0,194,168,0.25);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-link {
+    margin-top: auto;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: var(--accent);
+    font-size: 0.83rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    transition: gap 0.2s;
+  }
+
+  .card-link:hover { gap: 0.7rem; }
+
+  .enterprise-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border);
+  }
+
+  /* ─── COMPETENCIES ─── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .comp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .comp-card:hover { border-color: rgba(0,194,168,0.3); }
+
+  .comp-icon {
+    width: 38px; height: 38px;
+    background: var(--accent-dim);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .comp-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.9rem;
+  }
+
+  .comp-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.45rem;
+  }
+
+  .comp-list li {
+    font-size: 0.855rem;
+    color: var(--muted2);
+    display: flex; align-items: flex-start; gap: 0.55rem;
+    line-height: 1.5;
+  }
+
+  .comp-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative;
+    display: flex; flex-direction: column; gap: 0;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 3rem 2rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 8px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .tl-meta {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .tl-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  .tl-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.15rem;
+  }
+
+  .tl-org {
+    font-size: 0.87rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+  }
+
+  .tl-bullets {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.55rem;
+  }
+
+  .tl-bullets li {
+    font-size: 0.875rem;
+    color: var(--muted2);
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    line-height: 1.55;
+  }
+
+  .tl-bullets li::before {
+    content: '▸';
+    color: var(--accent);
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── HOW I WORK ─── */
+  #process { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  .step {
+    background: var(--surface);
+    padding: 1.5rem 1.25rem;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+  }
+
+  .step-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -8px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 0.75rem;
+    z-index: 2;
+  }
+
+  .principles {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+
+  .principle {
+    border-left: 3px solid var(--accent);
+    padding-left: 1.25rem;
+  }
+
+  .principle-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+
+  .principle-desc {
+    font-size: 0.83rem;
+    color: var(--muted2);
+    line-height: 1.55;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;
+  }
+
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .skill-tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted2);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .skill-tag:hover { border-color: var(--accent); color: var(--text); }
+
+  .skill-tag.highlight {
+    border-color: rgba(0,194,168,0.4);
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  /* ─── CERTS ─── */
+  .cert-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem;
+  }
+
+  .cert-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    font-size: 0.855rem;
+    color: var(--muted2);
+  }
+
+  .cert-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem,3.5vw,2.75rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-headline span { color: var(--accent); }
+
+  .contact-sub {
+    color: var(--muted2); font-size: 1rem; margin-bottom: 1.5rem; max-width: 420px;
+  }
+
+  .availability-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(0,194,168,0.1);
+    border: 1px solid rgba(0,194,168,0.3);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    border-radius: 30px;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  .cl-icon {
+    width: 36px; height: 36px;
+    background: var(--border);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 1.75rem clamp(1.5rem,5vw,4rem);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .impact-inner { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+    .step:nth-child(3)::after { display: none; }
+    .principles { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .impact-inner { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .step:nth-child(2)::after, .step:nth-child(4)::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">Marawan <span>Younis</span></div>
+  <ul class="nav-links">
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#competencies">Competencies</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#reference">Reference</a></li>
+    <li><a href="#process">Approach</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="hero-grid">
+    <div class="hero-content-wrap">
+      <div class="hero-eyebrow fade-up">Embedded AI &amp; Industrial AI Engineer</div>
+      <h1 class="fade-up delay-1">
+        Industrial AI<br>
+        that works in<br>
+        <span class="accent">OT/IT reality.</span>
+      </h1>
+      <p class="hero-value fade-up delay-2">
+        I design and deliver industrial AI systems — from <strong>real-time data ingestion</strong> 
+        and <strong>ML pipelines</strong> to <strong>operator-ready dashboards</strong>. 
+        Built to be adopted, not just demoed.
+      </p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="https://github.com/Marawan-Y" target="_blank" class="btn-secondary">GitHub Profile →</a>
+        <a href="#contact" class="btn-secondary">Contact</a>
+      </div>
+    </div>
+
+    <div class="hero-panel fade-up delay-2">
+      <div class="panel-header">
+        <div class="dot"></div>
+        System overview — key outcomes
+      </div>
+      <div class="metric-grid">
+        <div class="metric-tile">
+          <div class="metric-value">90%</div>
+          <div class="metric-label">Processing time reduction — days to ~40 min</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-value">3 Hz</div>
+          <div class="metric-label">Real-time AGV telemetry ingestion rate</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-value">5+</div>
+          <div class="metric-label">Industrial AI systems delivered end-to-end</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-value">2-stage</div>
+          <div class="metric-label">ML pipeline: classifier + LSTM forecasting</div>
+        </div>
+        <div class="metric-tile full">
+          <div class="metric-value" style="font-size:1.3rem;">M.Eng. AI · TH Deggendorf</div>
+          <div class="metric-label">AI for Smart Sensors &amp; Actuators · B.Eng. Electromechanics · Alexandria University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── IMPACT STRIP ─── -->
+<div id="impact">
+  <div class="impact-inner">
+    <div class="impact-tile">
+      <div class="impact-num">90%</div>
+      <div class="impact-desc">Workflow automation — manual Excel days replaced by ~40-minute platform run</div>
+    </div>
+    <div class="impact-tile">
+      <div class="impact-num">3 Hz</div>
+      <div class="impact-desc">Live fleet tracking — MQTT ingestion, coordinate transform, MySQL storage</div>
+    </div>
+    <div class="impact-tile">
+      <div class="impact-num">2-tier</div>
+      <div class="impact-desc">ML forecasting pipeline — zero-day classifier + LSTM magnitude regression</div>
+    </div>
+    <div class="impact-tile">
+      <div class="impact-num">Multi-LLM</div>
+      <div class="impact-desc">GenAI platform with evaluation, traceability, RLHF, and variance controls</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PROJECTS ─── -->
+<section id="projects" class="section">
+  <div class="section-label">Featured Case Studies</div>
+  <h2 class="section-title">Projects that shipped.</h2>
+  <p class="section-sub">Five industrial AI systems — delivered end-to-end, from requirements to deployment.</p>
+
+  <div class="projects-grid">
+
+    <!-- Card 1 -->
+    <div class="project-card">
+      <div class="card-tag">📦 Logistics · Cost Intelligence</div>
+      <div class="card-title">Logistics Cost Estimation Platform</div>
+
+      <div class="card-section-label">Problem</div>
+      <div class="card-section-text">Cost estimations for logistics planning were calculated manually across spreadsheets — a multi-day process prone to inconsistency and version drift.</div>
+
+      <div class="card-section-label">Approach</div>
+      <div class="card-section-text">Built a modular Streamlit platform integrating packaging, transport, warehouse, customs, environmental, and financial modules into a single, validated workflow with persistent JSON storage and exportable reports.</div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Streamlit</span>
+        <span class="tech-tag">JSON storage</span>
+        <span class="tech-tag">Modular architecture</span>
+      </div>
+
+      <div class="result-chip">↓ 90% processing time — days → ~40 minutes</div>
+
+      <a href="https://github.com/Marawan-Y/logistics-cost-estimation" target="_blank" class="card-link">View on GitHub →</a>
+      <div class="enterprise-note">⚑ Enterprise-safe: abstracted business logic; no proprietary rates or client data.</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="project-card">
+      <div class="card-tag">🤖 AGV · Real-Time Fleet</div>
+      <div class="card-title">AGV RTLS Dashboard</div>
+
+      <div class="card-section-label">Problem</div>
+      <div class="card-section-text">No live visibility into AGV fleet positions, zone utilisation, or anomaly patterns inside a production facility.</div>
+
+      <div class="card-section-label">Approach</div>
+      <div class="card-section-text">Rebuilt a Python/Flask tracking system with MQTT ingestion at 3 Hz, WGS84 → UTM → affine coordinate transforms, MySQL persistence, and a Streamlit dashboard rendering live trajectories, heatmaps, and zone overlays. Docker-orchestrated broker, database, and UI services.</div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">MQTT</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">Streamlit</span>
+        <span class="tech-tag">Node-RED</span>
+        <span class="tech-tag">Coordinate transforms</span>
+      </div>
+
+      <div class="result-chip">⚡ 3 Hz real-time ingestion · Full fleet visibility</div>
+
+      <a href="https://github.com/Marawan-Y/AGV_RTLS_V1" target="_blank" class="card-link">View on GitHub →</a>
+      <div class="enterprise-note">⚑ Enterprise-safe: plant layout abstracted; no proprietary map data included.</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="project-card">
+      <div class="card-tag">📈 Analytics · KPI Intelligence</div>
+      <div class="card-title">RTLS Trajectory Analytics Dashboard</div>
+
+      <div class="card-section-label">Problem</div>
+      <div class="card-section-text">Historical AGV position data in Snowflake lacked structured KPI reporting — speed, distance, and utilisation metrics were not actionable.</div>
+
+      <div class="card-section-label">Approach</div>
+      <div class="card-section-text">Developed a multi-tab Streamlit application (Snowflake or CSV input) with data cleaning, smoothing, KPI computation, and optional SVG plant-layout overlay. Exportable outputs and dynamic column/date filters enable self-service analytics.</div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">Snowflake</span>
+        <span class="tech-tag">Streamlit</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Plotly</span>
+        <span class="tech-tag">SVG overlay</span>
+      </div>
+
+      <div class="result-chip">📊 KPIs: distance · speed · utilisation · exports</div>
+
+      <a href="https://github.com/Marawan-Y/RTLS_Analysis_Dashboard" target="_blank" class="card-link">View on GitHub →</a>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="project-card">
+      <div class="card-tag">🔮 ML · Demand Forecasting</div>
+      <div class="card-title">Material Consumption Forecast Dashboard</div>
+
+      <div class="card-section-label">Problem</div>
+      <div class="card-section-text">Material consumption per machine was unpredictable, with zero-consumption days inflating forecast errors when modelled with a single approach.</div>
+
+      <div class="card-section-label">Approach</div>
+      <div class="card-section-text">Designed a two-stage ML pipeline: a logistic classifier to flag zero-consumption days, followed by an LSTM regression model for magnitude prediction. Data is pulled and merged from Snowflake; modular codebase (fetch, prepare, forecast, train) is extensible to additional machines.</div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">Snowflake</span>
+        <span class="tech-tag">Dash / Plotly</span>
+        <span class="tech-tag">LSTM</span>
+        <span class="tech-tag">Logistic Classifier</span>
+        <span class="tech-tag">Python</span>
+      </div>
+
+      <div class="result-chip">🧠 2-stage pipeline: zero-day detection + magnitude LSTM</div>
+
+      <a href="https://github.com/Marawan-Y/my_consumption_app" target="_blank" class="card-link">View on GitHub →</a>
+      <div class="enterprise-note">⚑ Enterprise-safe: model architecture shared; training data and machine identifiers abstracted.</div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="project-card">
+      <div class="card-tag">🤖 GenAI · Mobility Intelligence</div>
+      <div class="card-title">Schaeffler Mobility Insight Platform</div>
+
+      <div class="card-section-label">Problem</div>
+      <div class="card-section-text">Identifying and quantifying disruptive mobility technologies at scale required analyst time and lacked traceability, variance tracking, or structured evaluation.</div>
+
+      <div class="card-section-label">Approach</div>
+      <div class="card-section-text">Built a multi-agent GenAI web platform using GPT-4o, LangChain, and a Dockerized microservices layer. Agents coordinate data retrieval, analysis, and insight generation with RLHF. The system tracks confidence scores, variance, and technology readiness — with REST/WebSocket APIs, modular feature flags, and automated reporting cycles.</div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">OpenAI GPT-4o</span>
+        <span class="tech-tag">LangChain</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">RLHF</span>
+        <span class="tech-tag">WebSocket</span>
+      </div>
+
+      <div class="result-chip">✅ Evaluation · Traceability · Multi-LLM fallback · RLHF</div>
+
+      <a href="https://github.com/Marawan-Y/Mobility-Insight-Bot" target="_blank" class="card-link">View on GitHub →</a>
+      <div class="enterprise-note">⚑ Enterprise-safe: Master Thesis project; business context abstracted, architecture shared.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── COMPETENCIES ─── -->
+<section id="competencies" class="section" style="padding-top:0;">
+  <div class="section-label">Core Competencies</div>
+  <h2 class="section-title">Mapped to Industrial AI delivery.</h2>
+  <p class="section-sub">From OT sensor data to stakeholder adoption — six capability areas built in production.</p>
+
+  <div class="comp-grid">
+
+    <div class="comp-card">
+      <div class="comp-icon">⚙️</div>
+      <div class="comp-title">OT/IT Data Pipelines</div>
+      <ul class="comp-list">
+        <li>MQTT-based real-time streaming ingestion at production clock rates</li>
+        <li>Batch integration from Snowflake with multi-table merging</li>
+        <li>Coordinate transformation pipelines (WGS84 → UTM → plant frame)</li>
+        <li>Docker-orchestrated services: broker, DB, and UI as a single stack</li>
+        <li>Data validation, schema design, and persistent storage patterns</li>
+      </ul>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">📊</div>
+      <div class="comp-title">Industrial Analytics</div>
+      <ul class="comp-list">
+        <li>Time-series KPI computation: distance, speed, utilisation, availability</li>
+        <li>Trajectory smoothing, heatmap generation, and zone analysis</li>
+        <li>Drift-aware monitoring mindset — not just snapshot analytics</li>
+        <li>Self-service dashboard design with filters and exportable outputs</li>
+        <li>Optional plant layout overlays for spatial context</li>
+      </ul>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">🧠</div>
+      <div class="comp-title">Applied Machine Learning</div>
+      <ul class="comp-list">
+        <li>Multi-stage pipeline design: classifiers + regression models in sequence</li>
+        <li>LSTM-based time-series regression for demand forecasting</li>
+        <li>Deployment discipline: modular, extensible, machine-agnostic codebases</li>
+        <li>Model evaluation, variance tracking, and confidence scoring</li>
+        <li>Deep Learning, NLP, and reinforcement learning exposure</li>
+      </ul>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">💬</div>
+      <div class="comp-title">GenAI for Engineering</div>
+      <ul class="comp-list">
+        <li>Multi-agent orchestration with LangChain and LLM APIs (GPT-4o, Gemini)</li>
+        <li>Structured pipeline with evaluation gates and traceability logs</li>
+        <li>RLHF integration for human-in-the-loop quality control</li>
+        <li>Multi-LLM fallback and guardrail design for production reliability</li>
+        <li>Prompt engineering, fine-tuning, and agentic workflow design</li>
+      </ul>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">🛠️</div>
+      <div class="comp-title">Software Engineering</div>
+      <ul class="comp-list">
+        <li>REST and WebSocket API design with Flask and Socket.IO</li>
+        <li>Docker containerisation and service orchestration</li>
+        <li>CI/CD pipeline basics — Git workflow, testing mindset</li>
+        <li>Modular business logic separation from UI and data layers</li>
+        <li>Python, SQL, JavaScript/React; embedded C/C++ background</li>
+      </ul>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">🤝</div>
+      <div class="comp-title">Stakeholder Delivery</div>
+      <ul class="comp-list">
+        <li>Requirements gathering from logistics and operations stakeholders</li>
+        <li>Iterative MVP delivery with continuous feedback loops</li>
+        <li>Adoption-focused design: operator-ready UIs, not analyst tools</li>
+        <li>Exportable reports, professional documentation, audit trails</li>
+        <li>Work in English and German-speaking industrial environments</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience" class="section" style="padding-top:0;">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Where the work happened.</h2>
+  <p class="section-sub" style="margin-bottom:3.5rem;">Industrial delivery across automotive, logistics, and manufacturing.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="tl-meta">
+        <span class="tl-date">03.2025 – 09.2025</span>
+        <span class="tl-badge">Master Thesis</span>
+      </div>
+      <div class="tl-title">AI & Mobility Solutions — Discovery to Quantification</div>
+      <div class="tl-org">Schaeffler AG – Advanced Innovation · Regensburg, Germany</div>
+      <ul class="tl-bullets">
+        <li>Built a multi-agent GenAI platform (GPT-4o, LangChain, Docker microservices) to autonomously discover, quantify, and refine insights on disruptive mobility technologies — with RLHF, variance tracking, and confidence scoring.</li>
+        <li>Delivered an interactive React/Chat.js dashboard used by innovation analysts for guided four-phase pipeline decisions (identification → scouting → validation → implementation).</li>
+        <li>Designed system for production-readiness: REST + WebSocket APIs, modular feature flags, automated weekly/monthly reporting, and regression testing.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-meta">
+        <span class="tl-date">02.2025 – 12.2025</span>
+        <span class="tl-badge">Working Student</span>
+      </div>
+      <div class="tl-title">Digitalization — Logistics Planning & AGV Analytics</div>
+      <div class="tl-org">Knorr-Bremse · Aldersbach, Germany</div>
+      <ul class="tl-bullets">
+        <li>Delivered four industrial AI tools used by logistics and operations teams: cost estimation platform, real-time AGV dashboard, trajectory analytics, and material consumption forecast — reducing key workflows by up to 90%.</li>
+        <li>Integrated Snowflake, MQTT, MySQL, and Docker into production-grade data pipelines supporting AMR/AGV fleet operations.</li>
+        <li>Designed operator-facing Streamlit/Dash UIs enabling self-service KPI monitoring without engineering intervention.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-meta">
+        <span class="tl-date">01.2022 – 06.2022</span>
+        <span class="tl-badge">Full-time</span>
+      </div>
+      <div class="tl-title">Maintenance Engineer & Data Analyst</div>
+      <div class="tl-org">AMKO · Alexandria, Egypt</div>
+      <ul class="tl-bullets">
+        <li>Tracked and analysed steel production processes at EZ-Dekhela site using Excel and Python reporting scripts.</li>
+        <li>First hands-on exposure to industrial operations data and maintenance engineering workflow.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item" style="padding-bottom:0;">
+      <div class="tl-meta">
+        <span class="tl-date">09.2019 – 03.2020</span>
+        <span class="tl-badge">Trainee</span>
+      </div>
+      <div class="tl-title">Embedded Software & Hardware Engineering</div>
+      <div class="tl-org">CROCOMARINE · Alexandria, Egypt</div>
+      <ul class="tl-bullets">
+        <li>PCB design and embedded systems development in C — grounding for later OT-layer work with sensors and actuators.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process" class="section">
+  <div class="section-label">How I Work</div>
+  <h2 class="section-title">A consulting delivery method.</h2>
+  <p class="section-sub">Six phases — from discovery to scale — designed for industrial environments where adoption matters as much as accuracy.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01 / DISCOVER</div>
+      <div class="step-name">Discover</div>
+      <div class="step-desc">Stakeholder interviews, process mapping, pain-point prioritisation</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02 / DATA</div>
+      <div class="step-name">Data Readiness</div>
+      <div class="step-desc">Source audit, schema design, pipeline feasibility, data quality baseline</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03 / MVP</div>
+      <div class="step-name">MVP Analytics</div>
+      <div class="step-desc">First-pass dashboard or KPI report — validate value before model build</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04 / MODEL</div>
+      <div class="step-name">Model Build</div>
+      <div class="step-desc">ML pipeline design, evaluation gates, variance tracking, human review loops</div>
+    </div>
+    <div class="step">
+      <div class="step-num">05 / DEPLOY</div>
+      <div class="step-name">Deploy & Monitor</div>
+      <div class="step-desc">Containerised deployment, operator-ready UI, drift monitoring in place</div>
+    </div>
+    <div class="step">
+      <div class="step-num">06 / SCALE</div>
+      <div class="step-name">Scale</div>
+      <div class="step-desc">Modular extensibility, documentation handover, additional use-cases</div>
+    </div>
+  </div>
+
+  <div class="principles">
+    <div class="principle">
+      <div class="principle-title">Reliability over novelty</div>
+      <div class="principle-desc">The right model is the one operators trust and use daily — not the latest architecture. Proven, monitored, explainable.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-title">Adoption as engineering</div>
+      <div class="principle-desc">UI design, export formats, and operator UX are first-class engineering concerns — not afterthoughts. Systems that aren't used don't deliver value.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-title">Traceability by design</div>
+      <div class="principle-desc">Every pipeline decision — data source, model choice, threshold — is logged, auditable, and reviewable. Especially critical for GenAI outputs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─── -->
+<section id="skills" class="section" style="padding-top:0;">
+  <div class="section-label">Skills & Tools</div>
+  <h2 class="section-title">The stack.</h2>
+  <p class="section-sub" style="margin-bottom:2.5rem;">Tools used in production — grouped by function.</p>
+
+  <div class="skills-grid">
+    <div>
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Python</span>
+        <span class="skill-tag highlight">SQL</span>
+        <span class="skill-tag">C / C++</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">MATLAB</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Data & Cloud</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Snowflake</span>
+        <span class="skill-tag highlight">MySQL</span>
+        <span class="skill-tag">MQTT</span>
+        <span class="skill-tag">Azure (learning)</span>
+        <span class="skill-tag">AWS basics</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Frameworks & UI</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Streamlit</span>
+        <span class="skill-tag highlight">Dash / Plotly</span>
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Socket.IO</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">AI / ML</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">LangChain</span>
+        <span class="skill-tag highlight">OpenAI API</span>
+        <span class="skill-tag">LSTM</span>
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">RLHF</span>
+        <span class="skill-tag">Prompt Engineering</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">DevOps & Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Docker</span>
+        <span class="skill-tag highlight">Git / GitHub</span>
+        <span class="skill-tag">CI/CD basics</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">ROS</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Languages (Human)</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">English (Professional)</span>
+        <span class="skill-tag">German (B1)</span>
+        <span class="skill-tag">Arabic (Native)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div style="margin-top:3.5rem;">
+    <div class="section-label">Certifications & Training</div>
+    <h2 class="section-title" style="font-size:1.5rem; margin-bottom:1.5rem;">Structured learning, applied practice.</h2>
+    <div class="cert-list">
+      <div class="cert-item"><div class="cert-dot"></div>Agentic AI — DeepLearning.AI, 2025</div>
+      <div class="cert-item"><div class="cert-dot"></div>Fine-Tuning for LLMs: Beginner to Advanced — LinkedIn, 2025</div>
+      <div class="cert-item"><div class="cert-dot"></div>Prompt Engineering for Developers — DeepLearning.AI, 2025</div>
+      <div class="cert-item"><div class="cert-dot"></div>Docker Essential Training — LinkedIn, 2025</div>
+      <div class="cert-item"><div class="cert-dot"></div>Build CI/CD Pipeline — LinkedIn, 2025</div>
+      <div class="cert-item"><div class="cert-dot"></div>DevOps Foundation — LinkedIn, 2025</div>
+      <div class="cert-item"><div class="cert-dot"></div>HTML, CSS & Generative AI — LinkedIn, 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REFERENCE ─── -->
+<section id="reference" class="section" style="padding-top:0;">
+  <div class="section-label">Professional Reference</div>
+  <h2 class="section-title">What my manager said.</h2>
+  <p class="section-sub">Official Werkstudentenzeugnis — Knorr-Bremse Systeme für Nutzfahrzeuge GmbH · Aldersbach, 15.12.2025</p>
+
+  <div class="ref-card">
+    <div class="ref-header">
+      <div class="ref-logo-block">
+        <div class="ref-company">KNORR-BREMSE</div>
+        <div class="ref-dept">Logistikplanung · T/L-SC-DV · Werk Aldersbach</div>
+      </div>
+      <div class="ref-signatories">
+        <div class="ref-sig">
+          <div class="ref-sig-name">Alexander Breitenfellner</div>
+          <div class="ref-sig-title">Teamleiter Logistikplanung</div>
+        </div>
+        <div class="ref-sig">
+          <div class="ref-sig-name">Thomas Listl</div>
+          <div class="ref-sig-title">Personalleiter</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ref-quote-block">
+      <div class="ref-quote-icon">"</div>
+      <blockquote class="ref-main-quote">
+        Herr Younis erfüllte die ihm übertragenen Aufgaben zu unserer <em>vollen Zufriedenheit</em>. Sein Verhalten gegenüber Vorgesetzten und Kollegen war jederzeit einwandfrei.
+      </blockquote>
+      <div class="ref-attribution">— Official closing statement, Werkstudentenzeugnis</div>
+    </div>
+
+    <div class="ref-highlights">
+
+      <div class="ref-highlight-item">
+        <div class="ref-h-icon">🎯</div>
+        <div>
+          <div class="ref-h-title">Dedicated, reliable & analytically sharp</div>
+          <div class="ref-h-text">Described as an <strong>engagierter, zuverlässiger und analytisch denkender Mitarbeiter</strong> — an engaged, dependable, and analytical thinker who approached every assignment with rigour.</div>
+        </div>
+      </div>
+
+      <div class="ref-highlight-item">
+        <div class="ref-h-icon">⚡</div>
+        <div>
+          <div class="ref-h-title">Fast ramp-up on complex topics</div>
+          <div class="ref-h-text">Recognised for the ability to <strong>quickly familiarise himself with complex subjects</strong> — applying a structured, solution-oriented approach that convinced stakeholders and delivered results.</div>
+        </div>
+      </div>
+
+      <div class="ref-highlight-item">
+        <div class="ref-h-icon">📊</div>
+        <div>
+          <div class="ref-h-title">Data analysis that drove project planning</div>
+          <div class="ref-h-text">His <strong>ability to efficiently analyse large datasets and present findings clearly</strong> was explicitly credited as a <em>decisive contribution</em> to the planning of multiple logistics projects.</div>
+        </div>
+      </div>
+
+      <div class="ref-highlight-item">
+        <div class="ref-h-icon">💡</div>
+        <div>
+          <div class="ref-h-title">Contributed valuable ideas on innovative concepts</div>
+          <div class="ref-h-text">Specifically cited for bringing <strong>wertvolle Ideen</strong> (valuable ideas) to the development of the logistics cost model — an AI use-case initiative for cost optimisation and decision support.</div>
+        </div>
+      </div>
+
+      <div class="ref-highlight-item">
+        <div class="ref-h-icon">🤝</div>
+        <div>
+          <div class="ref-h-title">Excellent team integration & positive climate</div>
+          <div class="ref-h-text">Praised for integrating <strong>hervorragend</strong> (excellently) into the team and actively contributing to a positive working environment through a cooperative and professional manner.</div>
+        </div>
+      </div>
+
+      <div class="ref-highlight-item">
+        <div class="ref-h-icon">🤖</div>
+        <div>
+          <div class="ref-h-title">End-to-end AGV & RTLS project delivery</div>
+          <div class="ref-h-text">Formally recognised for <strong>AGV layout mapping, source/sink catalogue design, RTLS-based fleet movement analytics, and AGV/AMR automation planning</strong> — all delivered as part of the Intralogistik digitalization programme.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-footer-note">
+      📄 Full reference available upon request · Issued 15 December 2025 · Knorr-Bremse Systeme für Nutzfahrzeuge GmbH
+    </div>
+  </div>
+</section>
+
+<style>
+  .ref-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .ref-header {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 1.75rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    position: relative;
+  }
+
+  .ref-header::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  .ref-company {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+  }
+
+  .ref-dept {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .ref-signatories {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+  }
+
+  .ref-sig-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+
+  .ref-sig-title {
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+
+  .ref-quote-block {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .ref-quote-icon {
+    font-family: 'Syne', sans-serif;
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    position: absolute;
+    top: 1rem; left: 1.5rem;
+    pointer-events: none;
+  }
+
+  .ref-main-quote {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.7;
+    font-style: italic;
+    font-weight: 300;
+    max-width: 800px;
+    padding-left: 0.5rem;
+  }
+
+  .ref-main-quote em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .ref-attribution {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .ref-highlights {
+    padding: 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .ref-highlight-item {
+    display: flex; gap: 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .ref-highlight-item:hover { border-color: rgba(0,194,168,0.35); }
+
+  .ref-h-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .ref-h-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .ref-h-text {
+    font-size: 0.82rem;
+    color: var(--muted2);
+    line-height: 1.6;
+  }
+
+  .ref-h-text strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .ref-footer-note {
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    background: var(--surface2);
+  }
+
+  @media (max-width: 640px) {
+    .ref-highlights { grid-template-columns: 1fr; padding: 1rem; }
+    .ref-header { padding: 1.25rem; }
+    .ref-quote-block { padding: 1.5rem 1.25rem; }
+  }
+</style>
+
+<!-- ─── CONTACT ─── -->
+<div id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label" style="margin-bottom:0.75rem;">Let's work together</div>
+      <div class="contact-headline">Open to <span>Industrial AI</span> consulting roles.</div>
+      <p class="contact-sub">Based in Regensburg, Germany. Available for consulting engagements, projects, and roles in Industrial AI, OT/IT analytics, and digitalization — travel-ready across Europe.</p>
+      <div class="availability-badge">
+        <div class="dot"></div>
+        Open to opportunities · Germany / Europe
+      </div>
+    </div>
+
+    <div class="contact-links">
+      <a href="/cdn-cgi/l/email-protection#0b72647e6562783f3d323f4b6c666a626725686466" class="contact-link">
+        <div class="cl-icon">✉️</div>
+        <div>
+          <div style="font-weight:600; color:var(--white); margin-bottom:0.1rem;">Email</div>
+          <div style="font-size:0.82rem; color:var(--muted);"><span class="__cf_email__" data-cfemail="0d74627863647e393b34394d6a606c6461236e6260">[email&#160;protected]</span></div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/marawan-younis" target="_blank" class="contact-link">
+        <div class="cl-icon">💼</div>
+        <div>
+          <div style="font-weight:600; color:var(--white); margin-bottom:0.1rem;">LinkedIn</div>
+          <div style="font-size:0.82rem; color:var(--muted);">linkedin.com/in/marawan-younis</div>
+        </div>
+      </a>
+      <a href="https://github.com/Marawan-Y" target="_blank" class="contact-link">
+        <div class="cl-icon">⌨️</div>
+        <div>
+          <div style="font-weight:600; color:var(--white); margin-bottom:0.1rem;">GitHub</div>
+          <div style="font-size:0.82rem; color:var(--muted);">github.com/Marawan-Y</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 Mara
